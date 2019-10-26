@@ -16,21 +16,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
-                Greeting("Android")
-            }
+            MyApp()
+        }
+    }
+}
+
+@Preview
+@Composable
+fun MyApp() {
+    MaterialTheme {
+        Surface(color = Color.Yellow) {
+            Greeting("Android")
         }
     }
 }
 
 @Composable
 fun Greeting(name: String) {
-    Surface(color = Color.Yellow) {
-        Text(text = "Hello $name!", modifier = Spacing(24.dp))
-    }
+    Text(text = "Hello $name!", modifier = Spacing(24.dp))
 }
 
-@Preview
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
