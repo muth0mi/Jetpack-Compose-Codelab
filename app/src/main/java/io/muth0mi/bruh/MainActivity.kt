@@ -37,9 +37,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MyApp(child: @Composable() () -> Unit) {
     CustomTheme {
-        Surface() {
-            child()
-        }
+        child()
     }
 }
 
