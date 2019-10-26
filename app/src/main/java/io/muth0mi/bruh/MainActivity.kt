@@ -3,6 +3,8 @@ package io.muth0mi.bruh
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.compose.Model
@@ -45,7 +47,7 @@ fun MyScreenContent() {
         Divider(color = Color.Black)
         Greeting("There")
         Divider(color = Color.Transparent, height = 32.dp)
-        Counter(CounterState())
+        Counter(CounterState(), { Log.e("MyScreenContent","The counter button was clicked") })
     }
 }
 
@@ -55,9 +57,12 @@ fun Greeting(name: String) {
 }
 
 @Composable
-fun Counter(state: CounterState) {
+fun Counter(state: CounterState, afterClick: () -> Unit) {
     Button(text = "I have been clicked ${state.count} times",
-        onClick = { state.count++ })
+        onClick = {
+            state.count++
+            afterClick()
+        })
 }
 
 @Preview
