@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun MyApp(child: @Composable() () -> Unit) {
-    MaterialTheme {
-        Surface(color = Color.Yellow) {
+    CustomTheme {
+        Surface() {
             child()
         }
     }
@@ -53,6 +53,7 @@ fun MyScreenContent() {
             Divider(color = Color.Transparent, height = 32.dp)
         }
         Counter(CounterState(), { Log.e("MyScreenContent", "The counter button was clicked") })
+        Divider(color = Color.Transparent, height = 32.dp)
     }
 }
 
