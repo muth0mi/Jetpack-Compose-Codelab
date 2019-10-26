@@ -7,7 +7,9 @@ import androidx.ui.core.Text
 import androidx.ui.core.dp
 import androidx.ui.core.setContent
 import androidx.ui.graphics.Color
+import androidx.ui.layout.Column
 import androidx.ui.layout.Spacing
+import androidx.ui.material.Divider
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.surface.Surface
 import androidx.ui.tooling.preview.Preview
@@ -16,19 +18,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp{
-                Greeting("Oliver")
+            MyApp {
+                MyScreenContent()
             }
         }
     }
 }
 
 @Composable
-fun MyApp(child : @Composable() ()-> Unit) {
+fun MyApp(child: @Composable() () -> Unit) {
     MaterialTheme {
         Surface(color = Color.Yellow) {
             child()
         }
+    }
+}
+
+@Composable
+fun MyScreenContent() {
+    Column {
+        Greeting("Oly")
+        Divider(color = Color.Black)
+        Greeting("There")
     }
 }
 
@@ -41,6 +52,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     MyApp {
-        Greeting("Oliver")
+        MyScreenContent()
     }
 }
