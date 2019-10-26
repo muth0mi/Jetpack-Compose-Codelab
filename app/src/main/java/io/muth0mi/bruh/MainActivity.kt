@@ -13,6 +13,7 @@ import androidx.ui.core.dp
 import androidx.ui.core.setContent
 import androidx.ui.graphics.Color
 import androidx.ui.layout.Column
+import androidx.ui.layout.CrossAxisAlignment
 import androidx.ui.layout.Spacing
 import androidx.ui.material.Button
 import androidx.ui.material.Divider
@@ -42,12 +43,14 @@ fun MyApp(child: @Composable() () -> Unit) {
 
 @Composable
 fun MyScreenContent() {
-    Column {
-        Greeting("Oly")
-        Divider(color = Color.Black)
-        Greeting("There")
-        Divider(color = Color.Transparent, height = 32.dp)
-        Counter(CounterState(), { Log.e("MyScreenContent","The counter button was clicked") })
+    Column(crossAxisAlignment = CrossAxisAlignment.Center) {
+        Column(crossAxisAlignment = CrossAxisAlignment.Center, modifier = Flexible(1f)) {
+            Greeting("Oly")
+            Divider(color = Color.Black)
+            Greeting("There")
+            Divider(color = Color.Transparent, height = 32.dp)
+        }
+        Counter(CounterState(), { Log.e("MyScreenContent", "The counter button was clicked") })
     }
 }
 
@@ -59,10 +62,8 @@ fun Greeting(name: String) {
 @Composable
 fun Counter(state: CounterState, afterClick: () -> Unit) {
     Button(text = "I have been clicked ${state.count} times",
-        onClick = {
-            state.count++
-            afterClick()
-        })
+        onClick = { state.count++; afterClick() }
+    )
 }
 
 @Preview
