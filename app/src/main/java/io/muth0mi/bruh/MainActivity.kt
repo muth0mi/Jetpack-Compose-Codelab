@@ -16,17 +16,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp()
+            MyApp{
+                Greeting("Oliver")
+            }
         }
     }
 }
 
-@Preview
 @Composable
-fun MyApp() {
+fun MyApp(child : @Composable() ()-> Unit) {
     MaterialTheme {
         Surface(color = Color.Yellow) {
-            Greeting("Android")
+            child()
         }
     }
 }
@@ -36,9 +37,10 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!", modifier = Spacing(24.dp))
 }
 
+@Preview
 @Composable
 fun DefaultPreview() {
-    MaterialTheme {
-        Greeting("Android")
+    MyApp {
+        Greeting("Oliver")
     }
 }
